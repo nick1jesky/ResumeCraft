@@ -47,9 +47,11 @@ except ImportError:  # pragma: no cover - plain fallback when rich isn't install
 )
 @click.option(
     "--theme", "-t",
-    type=click.Choice(["modern", "classic", "minimal", "executive", "black-green"], case_sensitive=False),
+    type=click.Choice(
+        ["clarity", "modern", "classic", "minimal", "executive", "black-green"], case_sensitive=False
+    ),
     default=None,
-    help="Выбор темы [default: executive]",
+    help="Выбор темы [default: clarity]",
 )
 @click.option(
     "--lang", "-l",

@@ -21,13 +21,20 @@ class BaseGenerator:
     #: Themes each generator subclass knows how to render. HTML/PDF use all
     #: three built-in themes; DOCX renders one consistent style but still
     #: respects accent_color/font_family, so it accepts the same set.
-    SUPPORTED_THEMES: tuple[str, ...] = ("modern", "classic", "minimal", "executive", "black-green")
+    SUPPORTED_THEMES: tuple[str, ...] = (
+        "clarity",
+        "modern",
+        "classic",
+        "minimal",
+        "executive",
+        "black-green",
+    )
 
     def __init__(
         self,
         data: ResumeData,
         *,
-        theme_name: str = "modern",
+        theme_name: str = "clarity",
         lang: str = "ru",
         accent_color: str = "2B6CB0",
         font_family: str = "Calibri, 'Segoe UI', Arial, sans-serif",

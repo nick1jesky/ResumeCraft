@@ -16,7 +16,7 @@
 - `--version` - Версия.
 - `-o, --output PATH` - Директория вывода.
 - `-f, --format [html|pdf|docx|all] [default: all]` - Выбор формата выходного документа. 
-- `-t, --theme [modern|classic|minimal|executive|black-green] [default: executive]` - Выбор темы.
+- `-t, --theme [clarity|modern|classic|minimal|executive|black-green] [default: clarity]` - Выбор темы.
 - `-l, --lang [ru|en] [default: ru]` - Выбор языка.
 - `--accent-color TEXT` - Цвет акцента в hex формате.
 - `--font TEXT` - Шрифт.

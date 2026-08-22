@@ -22,7 +22,7 @@ class PDFGenerator(BaseGenerator):
         self,
         data,
         *,
-        theme_name: str = "modern",
+        theme_name: str = "clarity",
         lang: str = "ru",
         accent_color: str = "2B6CB0",
         font_family: str = "Calibri, 'Segoe UI', Arial, sans-serif",

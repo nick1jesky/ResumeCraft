@@ -19,7 +19,7 @@ from typing import Any, Literal
 from resumecraft.exceptions import ConfigError
 from resumecraft.utils import normalize_hex_color
 
-Theme = Literal["modern", "classic", "minimal", "executive", "black-green"]
+Theme = Literal["clarity", "modern", "classic", "minimal", "executive", "black-green"]
 OutputFormat = Literal["html", "pdf", "docx", "all"]
 Language = Literal["ru", "en"]
 PDFBackend = Literal["weasyprint", "pdfkit"]
@@ -38,7 +38,7 @@ class Config:
     """Fully-resolved application configuration."""
 
     output_dir: Path = field(default_factory=lambda: Path("./output"))
-    theme: Theme = "executive"
+    theme: Theme = "clarity"
     format: OutputFormat = "all"
     language: Language = "ru"
     pdf_backend: PDFBackend = "weasyprint"
