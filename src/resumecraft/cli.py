@@ -37,57 +37,57 @@ except ImportError:  # pragma: no cover - plain fallback when rich isn't install
     "--output", "-o",
     type=click.Path(path_type=Path),
     default=None,
-    help="Output directory [default: ./output, or config/env]",
+    help="Директория вывода [default: ./output или config/env]",
 )
 @click.option(
     "--format", "-f",
     type=click.Choice(["html", "pdf", "docx", "all"], case_sensitive=False),
     default=None,
-    help="Output format [default: all]",
+    help="Выбор формата выходного документа [default: all]",
 )
 @click.option(
     "--theme", "-t",
     type=click.Choice(["modern", "classic", "minimal", "executive", "black-green"], case_sensitive=False),
     default=None,
-    help="Resume theme [default: executive]",
+    help="Выбор темы [default: executive]",
 )
 @click.option(
     "--lang", "-l",
     type=click.Choice(["ru", "en"], case_sensitive=False),
     default=None,
-    help="Language [default: ru]",
+    help="Выбор языка [default: ru]",
 )
 @click.option(
     "--accent-color",
     default=None,
-    help="Accent color as hex, e.g. '#2B6CB0' [default: 2B6CB0]",
+    help="Цвет акцентов в hex формате [default: 2B6CB0]",
 )
 @click.option(
     "--font",
     "font_family",
     default=None,
-    help="Font family, e.g. 'Calibri, Arial, sans-serif'",
+    help="Шрифт"
 )
 @click.option(
     "--pdf-backend",
     type=click.Choice(["weasyprint", "pdfkit"], case_sensitive=False),
     default=None,
-    help="PDF generation backend [default: weasyprint]",
+    help="backend PDF генерации [default: weasyprint]",
 )
 @click.option(
     "--wkhtmltopdf-path",
     type=click.Path(exists=True),
     default=None,
-    help="Path to the wkhtmltopdf binary (only used with --pdf-backend pdfkit)",
+    help="Путь к wkhtmltopdf (использовать только с --pdf-backend pdfkit)",
 )
 @click.option(
     "--config", "config_path",
     type=click.Path(exists=True, path_type=Path),
     default=None,
-    help="Path to a resumecraft.toml config file (auto-discovered otherwise)",
+    help="Путь к resumecraft.toml",
 )
-@click.option("--debug", is_flag=True, default=None, help="Enable debug logging")
-@click.option("--list-themes", is_flag=True, help="List available themes and exit")
+@click.option("--debug", is_flag=True, default=None, help="Включить debug логирование")
+@click.option("--list-themes", is_flag=True, help="Список доступных тем")
 def main(
     input_file: Path | None,
     output: Path | None,
@@ -102,20 +102,7 @@ def main(
     debug: bool | None,
     list_themes: bool,
 ) -> None:
-    """Generate a resume in HTML, PDF, and/or DOCX from a JSON or YAML file.
-
-    Settings are resolved in this order (later wins): built-in defaults,
-    a resumecraft.toml config file, RESUMECRAFT_* environment variables,
-    then these command-line flags.
-
-    \b
-    Examples:
-      resumecraft resume.json
-      resumecraft resume.yaml -o ./dist -f pdf --theme classic --lang en
-      resumecraft resume.json --accent-color '#0F766E' --font "Georgia, serif"
-      resumecraft resume.json --pdf-backend pdfkit --wkhtmltopdf-path /usr/bin/wkhtmltopdf
-      resumecraft --list-themes
-    """
+    """ResumeCraft — это генератор профессиональных резюме, который форматирует в ваши вводные данные в красиво оформленные документы в форматах HTML, PDF и DOCX из JSON и YAML файлов."""
     if list_themes:
         for name in list_available_themes():
             _print(f"  • {name}")
