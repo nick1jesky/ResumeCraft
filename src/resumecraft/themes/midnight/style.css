@@ -1,0 +1,278 @@
+/* style.css — "midnight": a deliberately dark theme for digital sharing.
+   Contrast-conscious: body text uses a warm off-white (never pure white on
+   pure black — harsh for long reading), the accent color is reserved for
+   structural elements (headings, borders, tags, links) rather than body
+   copy, and backgrounds are forced to survive into the PDF export via
+   print-color-adjust (dark PDFs only make sense if the color actually
+   prints). */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: #0b0d12;
+  font-family: {{ font_family }};
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: #d7dbe2;
+}
+
+body {
+  padding: 32px 16px;
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  background: #161a21;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 52px 56px 48px;
+}
+
+/* ===== Header ===== */
+
+.header {
+  border-bottom: 2.5px solid #{{ accent_color }};
+  padding-bottom: 18px;
+  margin-bottom: 26px;
+}
+
+.header h1 {
+  font-size: 25pt;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #f3f5f8;
+  line-height: 1.15;
+}
+
+.header .headline {
+  font-size: 12pt;
+  font-weight: 600;
+  color: #{{ accent_color }};
+  margin-top: 4px;
+}
+
+.contact-line {
+  margin-top: 12px;
+  font-size: 9.5pt;
+  color: #8f97a3;
+}
+
+.contact-line span {
+  margin-right: 14px;
+  white-space: nowrap;
+}
+
+.contact-line span:last-child {
+  margin-right: 0;
+}
+
+.contact-line a {
+  color: #8f97a3;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.contact-line a:hover {
+  color: #{{ accent_color }};
+  border-bottom-color: #{{ accent_color }};
+}
+
+/* ===== Sections ===== */
+
+.section {
+  margin-bottom: 22px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  font-size: 9.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: #{{ accent_color }};
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+  margin-bottom: 13px;
+}
+
+.summary {
+  color: #c3c9d2;
+}
+
+/* ===== Entries (experience / education / projects) ===== */
+
+.entry {
+  margin-bottom: 16px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-row {
+  overflow: hidden;
+}
+
+.entry-title {
+  float: left;
+  font-weight: 700;
+  font-size: 11pt;
+  color: #f0f2f5;
+}
+
+.entry-sep {
+  color: #5b6472;
+  font-weight: 400;
+}
+
+.entry-date {
+  float: right;
+  font-size: 9pt;
+  color: #8f97a3;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.entry-sub {
+  clear: both;
+  font-size: 9.5pt;
+  color: #8f97a3;
+  margin-top: 1px;
+  margin-bottom: 6px;
+}
+
+.entry-desc {
+  color: #c3c9d2;
+  margin-bottom: 6px;
+}
+
+.entry ul {
+  margin: 0;
+  padding-left: 16px;
+  list-style-type: disc;
+}
+
+.entry ul li {
+  margin-bottom: 4px;
+  color: #ccd1d9;
+}
+
+.entry ul li::marker {
+  color: #{{ accent_color }};
+}
+
+/* ===== Skills ===== */
+
+.skills-row {
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+
+.skills-row:last-child {
+  margin-bottom: 0;
+}
+
+.skills-cat {
+  font-weight: 700;
+  color: #f0f2f5;
+  margin-right: 6px;
+}
+
+.skills-items {
+  color: #c3c9d2;
+}
+
+/* ===== Tech pills (projects) ===== */
+
+.tech-list {
+  margin-top: 2px;
+}
+
+.tech-pill {
+  display: inline-block;
+  font-size: 8.5pt;
+  color: #c3c9d2;
+  background: #1e242d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  padding: 1px 8px;
+  margin: 3px 6px 0 0;
+}
+
+/* ===== Two-column footer block (languages / certifications) ===== */
+
+.two-col {
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.two-col .col {
+  width: 48%;
+  margin-bottom: 0;
+}
+
+.two-col .col:first-child {
+  float: left;
+}
+
+.two-col .col:last-child {
+  float: right;
+}
+
+.two-col .col:only-child {
+  width: 100%;
+  float: none;
+}
+
+.inline-list {
+  color: #c3c9d2;
+}
+
+.inline-list .muted {
+  color: #8f97a3;
+}
+
+.tight-list {
+  padding-left: 16px;
+  list-style-type: disc;
+}
+
+.tight-list li {
+  margin-bottom: 3px;
+  color: #ccd1d9;
+}
+
+.tight-list li::marker {
+  color: #{{ accent_color }};
+}
+
+a {
+  color: #{{ accent_color }};
+  text-decoration: none;
+}
+
+/* ===== Force dark backgrounds to survive into PDF export ===== */
+
+html, body, .page, .tech-pill {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+@media print {
+  body {
+    padding: 0;
+  }
+  .page {
+    max-width: none;
+    border: none;
+    padding: 34px 42px;
+  }
+}

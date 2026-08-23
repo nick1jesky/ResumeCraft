@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ resume.full_name }} — {{ resume.title }}</title>
+<style>{{ inline_css }}</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="name-row">
+      <h1>{{ resume.full_name }}</h1>
+      <span class="headline">{{ resume.title }}</span>
+    </div>
+    <div class="contact-line">
+      {% if resume.location %}<span>{{ resume.location }}</span>{% endif %}
+      {% if resume.phone %}<span>{{ resume.phone }}</span>{% endif %}
+      {% if resume.email %}<span><a href="mailto:{{ resume.email }}">{{ resume.email }}</a></span>{% endif %}
+      {% if resume.linkedin %}<span><a href="{{ resume.linkedin }}">LinkedIn</a></span>{% endif %}
+      {% if resume.github %}<span><a href="{{ resume.github }}">GitHub</a></span>{% endif %}
+      {% if resume.website %}<span><a href="{{ resume.website }}">{{ resume.website }}</a></span>{% endif %}
+    </div>
+  </header>
+
+  {% if resume.summary %}
+  <section class="section">
+    <h2>{{ labels.summary }}</h2>
+    <p class="summary">{{ resume.summary }}</p>
+  </section>
+  {% endif %}
+
+  {% if resume.experience %}
+  <section class="section">
+    <h2>{{ labels.experience }}</h2>
+    {% for exp in resume.experience %}
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">{{ exp.position }} <span class="entry-sep">—</span> {{ exp.company }}{% if exp.location %} <span class="entry-sep">·</span> {{ exp.location }}{% endif %}</span>
+          <span class="entry-date">{{ exp.duration_text(present_label) }}</span>
+        </div>
+        <ul>
+          {% for line in exp.description %}<li>{{ line }}</li>{% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if resume.education %}
+  <section class="section">
+    <h2>{{ labels.education }}</h2>
+    {% for edu in resume.education %}
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">{{ edu.degree }}{% if edu.field %}, {{ edu.field }}{% endif %} <span class="entry-sep">—</span> {{ edu.institution }}{% if edu.location %} <span class="entry-sep">·</span> {{ edu.location }}{% endif %}{% if edu.gpa %} <span class="entry-sep">·</span> GPA {{ edu.gpa }}{% endif %}</span>
+          <span class="entry-date">{{ edu.duration_text(present_label) }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if resume.skills %}
+  <section class="section">
+    <h2>{{ labels.skills }}</h2>
+    <div class="skills">
+      {% for cat in resume.skills %}
+        <div class="skills-row"><span class="skills-cat">{{ cat.category }}:</span><span class="skills-items">{{ cat.items | join(', ') }}</span></div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if resume.projects %}
+  <section class="section">
+    <h2>{{ labels.projects }}</h2>
+    {% for proj in resume.projects %}
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">
+            {% if proj.url %}<a href="{{ proj.url }}">{{ proj.name }}</a>{% else %}{{ proj.name }}{% endif %}
+            {% if proj.technologies %}<span class="tech-inline"><span class="entry-sep">—</span> {{ proj.technologies | join(', ') }}</span>{% endif %}
+          </span>
+        </div>
+        {% if proj.description %}<p class="entry-desc">{{ proj.description }}</p>{% endif %}
+      </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if resume.languages %}
+  <section class="section">
+    <h2>{{ labels.languages }}</h2>
+    <p class="inline-list">
+      {% for l in resume.languages %}{{ l.language }}{% if l.level %} <span class="muted">({{ l.level }})</span>{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}
+    </p>
+  </section>
+  {% endif %}
+
+  {% if resume.certifications %}
+  <section class="section">
+    <h2>{{ labels.certifications }}</h2>
+    <p class="inline-list">{{ resume.certifications | join(' · ') }}</p>
+  </section>
+  {% endif %}
+
+  {% if resume.additional %}
+  <section class="section">
+    <h2>{{ labels.additional }}</h2>
+    <p>{{ resume.additional }}</p>
+  </section>
+  {% endif %}
+
+</div>
+</body>
+</html>

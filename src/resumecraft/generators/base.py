@@ -23,6 +23,11 @@ class BaseGenerator:
     #: respects accent_color/font_family, so it accepts the same set.
     SUPPORTED_THEMES: tuple[str, ...] = (
         "clarity",
+        "midnight",
+        "accent",
+        "editorial",
+        "slate",
+        "compact",
         "modern",
         "classic",
         "minimal",

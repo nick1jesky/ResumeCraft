@@ -1,0 +1,224 @@
+/* style.css — "slate": neutral corporate two-column. Grayscale-first,
+   accent color used only for the header rule and small heading labels —
+   aimed at conservative/corporate settings (finance, consulting,
+   operations) where a colorful resume can read as unpolished.
+   Table layout (not flexbox/grid) for wkhtmltopdf compatibility, same
+   technique as the built-in "modern" theme — but entry titles are
+   contained in an overflow:hidden row so a floated title can never
+   collide with the next block (the bug present in "modern"'s project
+   section). */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: #ffffff;
+  font-family: {{ font_family }};
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: #262a30;
+}
+
+/* ===== Header (full width, spans both columns) ===== */
+
+.header {
+  border-bottom: 3px solid #{{ accent_color }};
+  padding: 30px 44px 18px;
+}
+
+.header h1 {
+  font-size: 22pt;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #14171c;
+}
+
+.header .headline {
+  font-size: 11.5pt;
+  font-weight: 600;
+  color: #565e69;
+  margin-top: 3px;
+}
+
+/* ===== Two-column table ===== */
+
+table.page {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+td.sidebar {
+  width: 30%;
+  background: #f4f5f7;
+  padding: 28px 26px 32px;
+  vertical-align: top;
+  border-right: 1px solid #e6e8ec;
+}
+
+td.main {
+  width: 70%;
+  padding: 28px 40px 36px;
+  vertical-align: top;
+}
+
+/* ===== Shared heading style ===== */
+
+h2 {
+  font-size: 9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #{{ accent_color }};
+  margin-bottom: 10px;
+}
+
+td.sidebar h2 {
+  margin-top: 22px;
+}
+
+td.sidebar h2:first-child {
+  margin-top: 0;
+}
+
+/* ===== Sidebar lists ===== */
+
+.plain-list {
+  list-style: none;
+}
+
+.plain-list li {
+  font-size: 9.5pt;
+  color: #3d434b;
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+
+.plain-list li:last-child {
+  margin-bottom: 0;
+}
+
+.plain-list a {
+  color: #3d434b;
+  text-decoration: none;
+  border-bottom: 1px solid #c7cbd1;
+}
+
+.skill-group {
+  margin-bottom: 10px;
+}
+
+.skill-group:last-child {
+  margin-bottom: 0;
+}
+
+.skill-cat {
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: #181c23;
+  margin-bottom: 3px;
+}
+
+.muted {
+  color: #7a828d;
+}
+
+/* ===== Main column sections ===== */
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section > p {
+  color: #383d46;
+}
+
+/* ===== Entries ===== */
+
+.entry {
+  margin-bottom: 15px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-row {
+  overflow: hidden;
+}
+
+.entry-title {
+  float: left;
+  font-weight: 700;
+  font-size: 10.5pt;
+  color: #181c23;
+}
+
+.entry-sep {
+  color: #a4abb6;
+  font-weight: 400;
+}
+
+.entry-date {
+  float: right;
+  font-size: 8.5pt;
+  color: #7a828d;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.entry-sub {
+  clear: both;
+  font-size: 9pt;
+  color: #7a828d;
+  margin-top: 1px;
+  margin-bottom: 5px;
+}
+
+.entry-desc {
+  color: #383d46;
+  margin-bottom: 4px;
+}
+
+.tech-line {
+  font-size: 8.5pt;
+  color: #7a828d;
+}
+
+.entry ul {
+  margin: 0;
+  padding-left: 15px;
+  list-style-type: disc;
+}
+
+.entry ul li {
+  margin-bottom: 3px;
+  color: #33383f;
+  font-size: 9.5pt;
+}
+
+.entry ul li::marker {
+  color: #{{ accent_color }};
+}
+
+a {
+  color: #{{ accent_color }};
+}
+
+/* ===== Print ===== */
+
+@media print {
+  td.sidebar {
+    background: #f4f5f7;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}

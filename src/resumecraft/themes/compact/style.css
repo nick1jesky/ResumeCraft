@@ -1,0 +1,204 @@
+/* style.css — "compact": maximum information density, minimum decoration.
+   For long careers or multi-page-worthy content that needs to fit on one
+   page, and for anyone who wants the least amount of styling standing
+   between their text and an ATS parser. Near-monochrome; accent color is
+   limited to links and thin rules, never backgrounds. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: #ffffff;
+  font-family: {{ font_family }};
+  font-size: 9.5pt;
+  line-height: 1.4;
+  color: #1a1c20;
+}
+
+body {
+  padding: 20px 14px;
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 8px 6px;
+}
+
+/* ===== Header ===== */
+
+.header {
+  border-bottom: 1.5px solid #1a1c20;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+
+.name-row {
+  display: block;
+}
+
+.header h1 {
+  display: inline-block;
+  font-size: 16pt;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #0e1013;
+  margin-right: 10px;
+}
+
+.headline {
+  display: inline-block;
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: #454b54;
+}
+
+.contact-line {
+  margin-top: 4px;
+  font-size: 8.5pt;
+  color: #454b54;
+}
+
+.contact-line span {
+  margin-right: 12px;
+  white-space: nowrap;
+}
+
+.contact-line span:last-child {
+  margin-right: 0;
+}
+
+.contact-line a {
+  color: #{{ accent_color }};
+  text-decoration: none;
+}
+
+/* ===== Sections ===== */
+
+.section {
+  margin-bottom: 11px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #1a1c20;
+  border-bottom: 0.75px solid #b7bbc2;
+  padding-bottom: 2px;
+  margin-bottom: 6px;
+}
+
+.summary {
+  color: #2b2f35;
+}
+
+/* ===== Entries ===== */
+
+.entry {
+  margin-bottom: 7px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-row {
+  overflow: hidden;
+}
+
+.entry-title {
+  float: left;
+  font-weight: 700;
+  font-size: 9.5pt;
+  color: #14171b;
+}
+
+.entry-sep {
+  color: #9298a2;
+  font-weight: 400;
+}
+
+.entry-date {
+  float: right;
+  font-size: 8.5pt;
+  color: #5c636c;
+  white-space: nowrap;
+  padding-top: 1px;
+}
+
+.entry-desc {
+  color: #2b2f35;
+  margin-bottom: 2px;
+}
+
+.tech-inline {
+  font-weight: 400;
+  color: #5c636c;
+  font-size: 9pt;
+}
+
+.entry ul {
+  margin: 2px 0 0;
+  padding-left: 14px;
+  list-style-type: disc;
+}
+
+.entry ul li {
+  margin-bottom: 1.5px;
+  color: #24272d;
+}
+
+/* ===== Skills ===== */
+
+.skills-row {
+  margin-bottom: 2px;
+  overflow: hidden;
+}
+
+.skills-row:last-child {
+  margin-bottom: 0;
+}
+
+.skills-cat {
+  font-weight: 700;
+  color: #14171b;
+  margin-right: 5px;
+}
+
+.skills-items {
+  color: #2b2f35;
+}
+
+.inline-list {
+  color: #2b2f35;
+}
+
+.inline-list .muted {
+  color: #5c636c;
+}
+
+a {
+  color: #{{ accent_color }};
+  text-decoration: none;
+}
+
+/* ===== Print ===== */
+
+@media print {
+  body {
+    padding: 0;
+  }
+  .page {
+    max-width: none;
+    padding: 6px 4px;
+  }
+}

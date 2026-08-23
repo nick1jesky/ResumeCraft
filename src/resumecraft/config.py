@@ -19,7 +19,19 @@ from typing import Any, Literal
 from resumecraft.exceptions import ConfigError
 from resumecraft.utils import normalize_hex_color
 
-Theme = Literal["clarity", "modern", "classic", "minimal", "executive", "black-green"]
+Theme = Literal[
+    "clarity",
+    "midnight",
+    "accent",
+    "editorial",
+    "slate",
+    "compact",
+    "modern",
+    "classic",
+    "minimal",
+    "executive",
+    "black-green",
+]
 OutputFormat = Literal["html", "pdf", "docx", "all"]
 Language = Literal["ru", "en"]
 PDFBackend = Literal["weasyprint", "pdfkit"]

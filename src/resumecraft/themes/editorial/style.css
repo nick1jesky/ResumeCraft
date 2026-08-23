@@ -1,0 +1,275 @@
+/* style.css — "editorial": traditional, centered, formal. For fields where
+   convention signals credibility (law, finance, academia, government).
+   Layout and restraint carry the "traditional" feel rather than a hardcoded
+   typeface, so font_family stays fully user-configurable as in every other
+   theme — pair it with a serif stack (e.g. "Georgia, 'Times New Roman',
+   serif") via --font for the full effect. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: #eef1f5;
+  font-family: {{ font_family }};
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: #24272d;
+}
+
+body {
+  padding: 32px 16px;
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 56px 64px 50px;
+}
+
+/* ===== Header (centered) ===== */
+
+.header {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 3px double #{{ accent_color }};
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 24pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #14181f;
+  line-height: 1.2;
+}
+
+.header .headline {
+  font-size: 11.5pt;
+  font-weight: 400;
+  font-style: italic;
+  color: #4a5160;
+  margin-top: 6px;
+  letter-spacing: 0.02em;
+}
+
+.contact-line {
+  margin-top: 12px;
+  font-size: 9.5pt;
+  color: #5b6472;
+}
+
+.contact-line span {
+  margin: 0 8px;
+  white-space: nowrap;
+}
+
+.contact-line a {
+  color: #5b6472;
+  text-decoration: none;
+  border-bottom: 1px solid #c9cfd8;
+}
+
+.contact-line a:hover {
+  color: #{{ accent_color }};
+  border-bottom-color: #{{ accent_color }};
+}
+
+/* ===== Sections ===== */
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 10.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #24272d;
+  margin-bottom: 15px;
+}
+
+.section h2 .ornament {
+  display: block;
+  width: 46px;
+  height: 2px;
+  background: #{{ accent_color }};
+  margin: 0 auto 9px;
+}
+
+.summary {
+  color: #383d46;
+  text-align: left;
+}
+
+/* ===== Entries (experience / education / projects) ===== */
+
+.entry {
+  margin-bottom: 17px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-row {
+  overflow: hidden;
+}
+
+.entry-title {
+  float: left;
+  font-weight: 700;
+  font-size: 11pt;
+  color: #181c23;
+}
+
+.entry-sep {
+  color: #a4abb6;
+  font-weight: 400;
+}
+
+.entry-date {
+  float: right;
+  font-size: 9pt;
+  font-style: italic;
+  color: #6b7280;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.entry-sub {
+  clear: both;
+  font-size: 9.5pt;
+  font-style: italic;
+  color: #6b7280;
+  margin-top: 1px;
+  margin-bottom: 7px;
+}
+
+.entry-desc {
+  color: #383d46;
+  margin-bottom: 5px;
+}
+
+.tech-line {
+  font-size: 9pt;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.entry ul {
+  margin: 0;
+  padding-left: 18px;
+  list-style-type: square;
+}
+
+.entry ul li {
+  margin-bottom: 4px;
+  color: #33383f;
+}
+
+.entry ul li::marker {
+  color: #{{ accent_color }};
+}
+
+/* ===== Skills ===== */
+
+.skills-row {
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.skills-row:last-child {
+  margin-bottom: 0;
+}
+
+.skills-cat {
+  font-weight: 700;
+  color: #181c23;
+  margin-right: 6px;
+}
+
+.skills-items {
+  color: #383d46;
+}
+
+/* ===== Two-column footer block (languages / certifications) ===== */
+
+.two-col {
+  overflow: hidden;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.two-col .col {
+  width: 48%;
+  margin-bottom: 0;
+}
+
+.two-col .col:first-child {
+  float: left;
+}
+
+.two-col .col:last-child {
+  float: right;
+}
+
+.two-col .col:only-child {
+  width: 100%;
+  float: none;
+}
+
+.inline-list {
+  color: #383d46;
+  text-align: left;
+}
+
+.inline-list .muted {
+  color: #6b7280;
+}
+
+.tight-list {
+  padding-left: 18px;
+  list-style-type: square;
+  text-align: left;
+}
+
+.tight-list li {
+  margin-bottom: 3px;
+  color: #33383f;
+}
+
+.tight-list li::marker {
+  color: #{{ accent_color }};
+}
+
+a {
+  color: #{{ accent_color }};
+  text-decoration: none;
+}
+
+/* ===== Print ===== */
+
+@media print {
+  html, body {
+    background: #ffffff;
+  }
+  body {
+    padding: 0;
+  }
+  .page {
+    max-width: none;
+    padding: 36px 46px;
+  }
+}

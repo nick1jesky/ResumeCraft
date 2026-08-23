@@ -1,0 +1,271 @@
+/* style.css — "clarity": single-column, modern, high-readability, ATS-friendly.
+   Uses direct #{{ accent_color }} interpolation (not a CSS custom property)
+   so the accent always resolves to a valid color in every renderer. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: #eef1f5;
+  font-family: {{ font_family }};
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: #23272f;
+}
+
+body {
+  padding: 32px 16px;
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 52px 56px 48px;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06), 0 12px 32px rgba(16, 24, 40, 0.07);
+}
+
+/* ===== Header ===== */
+
+.header {
+  border-bottom: 2.5px solid #{{ accent_color }};
+  padding-bottom: 18px;
+  margin-bottom: 26px;
+}
+
+.header h1 {
+  font-size: 25pt;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #14181f;
+  line-height: 1.15;
+}
+
+.header .headline {
+  font-size: 12pt;
+  font-weight: 600;
+  color: #{{ accent_color }};
+  margin-top: 4px;
+}
+
+.contact-line {
+  margin-top: 12px;
+  font-size: 9.5pt;
+  color: #5b6472;
+}
+
+.contact-line span {
+  margin-right: 14px;
+  white-space: nowrap;
+}
+
+.contact-line span:last-child {
+  margin-right: 0;
+}
+
+.contact-line a {
+  color: #5b6472;
+  text-decoration: none;
+  border-bottom: 1px solid #c9cfd8;
+}
+
+.contact-line a:hover {
+  color: #{{ accent_color }};
+  border-bottom-color: #{{ accent_color }};
+}
+
+/* ===== Sections ===== */
+
+.section {
+  margin-bottom: 22px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  font-size: 9.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: #{{ accent_color }};
+  border-bottom: 1px solid #e2e5ea;
+  padding-bottom: 6px;
+  margin-bottom: 13px;
+}
+
+.summary {
+  color: #3a3f47;
+}
+
+/* ===== Entries (experience / education / projects) ===== */
+
+.entry {
+  margin-bottom: 16px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-row {
+  overflow: hidden;
+}
+
+.entry-title {
+  float: left;
+  font-weight: 700;
+  font-size: 11pt;
+  color: #191d24;
+}
+
+.entry-sep {
+  color: #a4abb6;
+  font-weight: 400;
+}
+
+.entry-date {
+  float: right;
+  font-size: 9pt;
+  color: #767f8c;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.entry-sub {
+  clear: both;
+  font-size: 9.5pt;
+  color: #767f8c;
+  margin-top: 1px;
+  margin-bottom: 6px;
+}
+
+.entry-desc {
+  color: #3a3f47;
+  margin-bottom: 6px;
+}
+
+.entry ul {
+  margin: 0;
+  padding-left: 16px;
+  list-style-type: disc;
+}
+
+.entry ul li {
+  margin-bottom: 4px;
+  color: #333842;
+}
+
+.entry ul li::marker {
+  color: #{{ accent_color }};
+}
+
+/* ===== Skills ===== */
+
+.skills-row {
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+
+.skills-row:last-child {
+  margin-bottom: 0;
+}
+
+.skills-cat {
+  font-weight: 700;
+  color: #191d24;
+  margin-right: 6px;
+}
+
+.skills-items {
+  color: #3a3f47;
+}
+
+/* ===== Tech pills (projects) ===== */
+
+.tech-list {
+  margin-top: 2px;
+}
+
+.tech-pill {
+  display: inline-block;
+  font-size: 8.5pt;
+  color: #43505f;
+  background: #f2f4f7;
+  border: 1px solid #e2e5ea;
+  border-radius: 3px;
+  padding: 1px 8px;
+  margin: 3px 6px 0 0;
+}
+
+/* ===== Two-column footer block (languages / certifications) ===== */
+
+.two-col {
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.two-col .col {
+  width: 48%;
+  margin-bottom: 0;
+}
+
+.two-col .col:first-child {
+  float: left;
+}
+
+.two-col .col:last-child {
+  float: right;
+}
+
+.two-col .col:only-child {
+  width: 100%;
+  float: none;
+}
+
+.inline-list {
+  color: #3a3f47;
+}
+
+.inline-list .muted {
+  color: #767f8c;
+}
+
+.tight-list {
+  padding-left: 16px;
+  list-style-type: disc;
+}
+
+.tight-list li {
+  margin-bottom: 3px;
+  color: #333842;
+}
+
+.tight-list li::marker {
+  color: #{{ accent_color }};
+}
+
+a {
+  color: #{{ accent_color }};
+  text-decoration: none;
+}
+
+/* ===== Print (PDF via weasyprint / wkhtmltopdf) ===== */
+
+@media print {
+  html, body {
+    background: #ffffff;
+  }
+  body {
+    padding: 0;
+  }
+  .page {
+    max-width: none;
+    box-shadow: none;
+    padding: 34px 42px;
+  }
+}
