@@ -6,6 +6,7 @@ import logging
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound, select_autoescape
+from markupsafe import Markup
 
 from resumecraft.exceptions import GenerationError, ThemeError
 from resumecraft.generators.base import BaseGenerator
@@ -43,7 +44,12 @@ class HTMLGenerator(BaseGenerator):
             "labels": self.labels,
             "lang": self.lang,
             "present_label": self.present_label(),
-            "inline_css": inline_css,
+            # inline_css is our own rendered CSS, not user input — wrap it as
+            # Markup so the (autoescape-on) HTML template doesn't re-escape
+            # its quotes. Unescaped, `content: "–";` becomes the invalid
+            # `content: &#34;–&#34;;` inside <style>, silently breaking any
+            # CSS rule that uses quoted content (e.g. ::before markers).
+            "inline_css": Markup(inline_css),
         }
         try:
             html_template = env.get_template("template.html.j2")

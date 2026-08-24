@@ -24,10 +24,12 @@ class BaseGenerator:
     SUPPORTED_THEMES: tuple[str, ...] = (
         "clarity",
         "midnight",
+        "obsidian",
         "accent",
         "editorial",
         "slate",
         "compact",
+        "terminal",
         "modern",
         "classic",
         "minimal",

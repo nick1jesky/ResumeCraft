@@ -1,0 +1,287 @@
+/* style.css — "obsidian": dark, precise, institutional. No rounded
+   corners, no shadows, no badges/pills, no decorative chrome — the only
+   accent device is the underline (beneath the name, beneath each section
+   label, beneath dates) plus a numbered index per section, in the spirit
+   of technical dossiers / annual-report design systems rather than
+   consumer UI. One accent color, used only for hairlines and the small
+   index numerals — never as a fill. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: #08090a;
+  font-family: {{ font_family }};
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: #e4e6e9;
+}
+
+body {
+  padding: 32px 16px;
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  background: #0e0f11;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 58px 60px 50px;
+}
+
+/* ===== Header ===== */
+
+.header h1 {
+  font-size: 23pt;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #f5f6f7;
+  line-height: 1.15;
+}
+
+.header .headline {
+  font-size: 10.5pt;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9a9fa6;
+  margin-top: 8px;
+}
+
+.mark {
+  width: 40px;
+  height: 2px;
+  background: #{{ accent_color }};
+  margin: 18px 0 16px;
+}
+
+.contact-line {
+  font-size: 9.5pt;
+  color: #9a9fa6;
+}
+
+.contact-line span {
+  margin-right: 16px;
+  white-space: nowrap;
+}
+
+.contact-line span:last-child {
+  margin-right: 0;
+}
+
+.contact-line a {
+  color: #9a9fa6;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-line a:hover {
+  color: #{{ accent_color }};
+  border-bottom-color: #{{ accent_color }};
+}
+
+/* ===== Sections ===== */
+
+.section {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.section h2 {
+  font-size: 9pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #d3d6da;
+  margin-bottom: 16px;
+}
+
+.section h2 .idx {
+  color: #{{ accent_color }};
+  font-weight: 700;
+  margin-right: 10px;
+  letter-spacing: 0;
+}
+
+.summary {
+  color: #c3c7cc;
+}
+
+/* ===== Entries (experience / education / projects) ===== */
+
+.entry {
+  margin-bottom: 18px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-row {
+  overflow: hidden;
+}
+
+.entry-title {
+  float: left;
+  font-weight: 700;
+  font-size: 10.5pt;
+  color: #f0f1f2;
+}
+
+.entry-sep {
+  color: #565b62;
+  font-weight: 400;
+}
+
+.entry-date {
+  float: right;
+  font-size: 8.5pt;
+  color: #9a9fa6;
+  white-space: nowrap;
+  padding-top: 1px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 2px;
+}
+
+.entry-sub {
+  clear: both;
+  font-size: 9.5pt;
+  color: #9a9fa6;
+  margin-top: 3px;
+  margin-bottom: 8px;
+}
+
+.entry-desc {
+  color: #c3c7cc;
+  margin-bottom: 5px;
+}
+
+.tech-line {
+  font-size: 8.5pt;
+  color: #767c84;
+  letter-spacing: 0.02em;
+}
+
+.entry ul {
+  list-style: none;
+  margin-top: 6px;
+}
+
+.entry ul li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 5px;
+  color: #c9cdd1;
+}
+
+.entry ul li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: #{{ accent_color }};
+}
+
+/* ===== Skills ===== */
+
+.skills-row {
+  margin-bottom: 11px;
+}
+
+.skills-row:last-child {
+  margin-bottom: 0;
+}
+
+.skills-cat {
+  display: inline-block;
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #d3d6da;
+  border-bottom: 1px solid #{{ accent_color }};
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+}
+
+.skills-items {
+  color: #c3c7cc;
+  font-size: 9.5pt;
+}
+
+/* ===== Two-column footer block (languages / certifications) ===== */
+
+.two-col {
+  overflow: hidden;
+}
+
+.two-col .col {
+  width: 47%;
+  margin-top: 0;
+}
+
+.two-col .col:first-child {
+  float: left;
+}
+
+.two-col .col:last-child {
+  float: right;
+}
+
+.two-col .col:only-child {
+  width: 100%;
+  float: none;
+}
+
+.inline-list {
+  color: #c3c7cc;
+}
+
+.inline-list .muted {
+  color: #767c84;
+}
+
+.tight-list {
+  list-style: none;
+}
+
+.tight-list li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 4px;
+  color: #c9cdd1;
+}
+
+.tight-list li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: #{{ accent_color }};
+}
+
+a {
+  color: #{{ accent_color }};
+  text-decoration: none;
+}
+
+/* ===== Force backgrounds to survive into PDF export ===== */
+
+html, body, .page {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+@media print {
+  body {
+    padding: 0;
+  }
+  .page {
+    max-width: none;
+    border: none;
+    padding: 40px 46px;
+  }
+}

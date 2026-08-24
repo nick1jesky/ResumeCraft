@@ -22,10 +22,12 @@ from resumecraft.utils import normalize_hex_color
 Theme = Literal[
     "clarity",
     "midnight",
+    "obsidian",
     "accent",
     "editorial",
     "slate",
     "compact",
+    "terminal",
     "modern",
     "classic",
     "minimal",

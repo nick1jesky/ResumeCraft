@@ -51,10 +51,12 @@ except ImportError:  # pragma: no cover - plain fallback when rich isn't install
         [
             "clarity",
             "midnight",
+            "obsidian",
             "accent",
             "editorial",
             "slate",
             "compact",
+            "terminal",
             "modern",
             "classic",
             "minimal",
