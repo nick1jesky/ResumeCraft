@@ -42,13 +42,54 @@
 - `--debug` - Включить debug логирование.
 - `--list-themes` - Список доступных тем.
 
-## 📦 Требования
+## ⬇️ Установка
 
-- Для генерации **PDF** дополнительно требуется один из бэкендов:
-  - **`chromium`** *(по умолчанию, рекомендуется)*
-    ```
-    pip install playwright
-    playwright install --with-deps chromium
-    ```
-  - `weasyprin`).
-  - `pdfkit` + установленный [wkhtmltopdf](https://wkhtmltopdf.org/downloads.html *проект архивирован разработчиками в 2023 году)*и
+Вы должны находиться в каталоге.
+
+### Создайте и активируйте виртуальное окружение (рекомендуется)
+
+**Windows (PowerShell):**
+
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+```
+
+**macOS/Linux:**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Установите пакет со всеми зависимостями 
+
+```
+pip install -e .
+```
+
+или
+
+```
+pip install .
+```
+
+### Установите браузер для генерации PDF (опционально)
+
+- **`chromium`** *(по умолчанию, рекомендуется)*
+  
+  **Windows (PowerShell):**
+  
+  ```
+  pip install playwright
+  playwright install --with-deps chromium
+  ```
+
+  **MacOS/Linux:**
+
+  ```
+  playwright install --with-deps chromium
+  ```
+
+- `weasyprin`.
+- `pdfkit` + установленный [wkhtmltopdf](https://wkhtmltopdf.org/downloads.html *проект архивирован разработчиками в 2023 году)*

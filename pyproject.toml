@@ -36,7 +36,7 @@ Homepage = "https://github.com/nick1jesky/ResumeCraft"
 Repository = "https://github.com/nick1jesky/ResumeCraft"
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["resumecraft*"]
 
 [tool.setuptools.package-data]
