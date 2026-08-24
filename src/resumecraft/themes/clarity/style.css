@@ -25,7 +25,7 @@ body {
   margin: 0 auto;
   background: #ffffff;
   padding: 52px 56px 48px;
-  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06), 0 12px 32px rgba(16, 24, 40, 0.07);
+  border: 1px solid #e6e8ec;
 }
 
 /* ===== Header ===== */
@@ -114,6 +114,7 @@ body {
 
 .entry-row {
   overflow: hidden;
+  display: flow-root;
 }
 
 .entry-title {
@@ -265,7 +266,11 @@ a {
   }
   .page {
     max-width: none;
-    box-shadow: none;
     padding: 34px 42px;
   }
+}
+
+.entry, .tech-pill {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

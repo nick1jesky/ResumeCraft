@@ -113,6 +113,7 @@ body {
 
 .entry-row {
   overflow: hidden;
+  display: flow-root;
 }
 
 .entry-title {
@@ -201,4 +202,9 @@ a {
     max-width: none;
     padding: 6px 4px;
   }
+}
+
+.entry {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

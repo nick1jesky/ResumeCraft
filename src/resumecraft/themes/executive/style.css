@@ -19,7 +19,7 @@ table.page {
   margin: 0 auto;
   background: #ffffff;
   border-collapse: collapse;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e6e8ec;
   border-radius: 12px;
   overflow: hidden;
 }
@@ -296,7 +296,7 @@ section:last-child {
   }
 
   table.page {
-    box-shadow: none;
+    border: none;
     border-radius: 0;
   }
 
@@ -310,4 +310,9 @@ section:last-child {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+}
+
+.entry, .tech-pill {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

@@ -123,6 +123,7 @@ body {
 
 .entry-row {
   overflow: hidden;
+  display: flow-root;
 }
 
 .entry-title {
@@ -284,4 +285,9 @@ html, body, .page {
     border: none;
     padding: 40px 46px;
   }
+}
+
+.entry {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

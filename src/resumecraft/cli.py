@@ -87,9 +87,9 @@ except ImportError:  # pragma: no cover - plain fallback when rich isn't install
 )
 @click.option(
     "--pdf-backend",
-    type=click.Choice(["weasyprint", "pdfkit"], case_sensitive=False),
+    type=click.Choice(["chromium", "weasyprint", "pdfkit"], case_sensitive=False),
     default=None,
-    help="backend PDF генерации [default: weasyprint]",
+    help="backend PDF генерации [default: chromium]",
 )
 @click.option(
     "--wkhtmltopdf-path",

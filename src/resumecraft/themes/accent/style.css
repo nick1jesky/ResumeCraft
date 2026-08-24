@@ -26,7 +26,7 @@ body {
   max-width: 780px;
   margin: 0 auto;
   background: #ffffff;
-  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06), 0 12px 32px rgba(16, 24, 40, 0.07);
+  border: 1px solid #e6e8ec;
   overflow: hidden;
 }
 
@@ -136,6 +136,7 @@ body {
 
 .entry-row {
   overflow: hidden;
+  display: flow-root;
 }
 
 .entry-title {
@@ -294,6 +295,10 @@ a {
   }
   .page {
     max-width: none;
-    box-shadow: none;
   }
+}
+
+.entry, .tech-pill {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

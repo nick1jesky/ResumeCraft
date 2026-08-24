@@ -19,7 +19,7 @@ table.page {
   margin: 0 auto;
   background: #ffffff;
   border-collapse: collapse;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #e6e8ec;
 }
 
 table.page td {
@@ -216,4 +216,20 @@ section:last-child {
   .entry-title, .entry-date {
     float: none;
   }
+}
+
+@media print {
+  body {
+    background: #ffffff;
+    padding: 0;
+  }
+  table.page {
+    max-width: none;
+    border: none;
+  }
+}
+
+.entry, .skill-pill {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

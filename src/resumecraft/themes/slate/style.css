@@ -152,6 +152,7 @@ td.sidebar h2:first-child {
 
 .entry-row {
   overflow: hidden;
+  display: flow-root;
 }
 
 .entry-title {
@@ -221,4 +222,9 @@ a {
     print-color-adjust: exact;
     color-adjust: exact;
   }
+}
+
+.entry {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

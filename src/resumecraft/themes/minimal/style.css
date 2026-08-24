@@ -18,8 +18,7 @@ body {
   color: var(--text-color);
   font-size: 1rem;
   line-height: 1.6;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  border-radius: 12px;
+  border: 1px solid #ececec;
 }
 
 header {
@@ -99,8 +98,21 @@ h2 {
   body {
     margin: 1rem;
     padding: 1.5rem;
-    border-radius: 8px;
   }
   header h1 { font-size: 1.8rem; }
   header .headline { font-size: 1rem; }
+}
+
+@media print {
+  body {
+    margin: 0;
+    max-width: none;
+    border: none;
+    padding: 30px 38px;
+  }
+}
+
+.entry, .tech-pill {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

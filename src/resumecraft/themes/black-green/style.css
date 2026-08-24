@@ -120,6 +120,7 @@ body {
 
 .entry-row {
   overflow: hidden;
+  display: flow-root;
 }
 
 .entry-title {
@@ -277,4 +278,9 @@ html, body, .page, .tech-pill {
     border: none;
     padding: 34px 42px;
   }
+}
+
+.entry, .tech-pill {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resumecraft"
+version = "0.1.1"
+description = "CLI generator of professional resumes from JSON/YAML to HTML, PDF, DOCX"
+readme = "README.md"
+authors = [{ name = "Nikolay Suvorov", email = "jeskym3t4l@gmail.com" }]
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "click>=8.0",
+    "jinja2>=3.0",
+    "markupsafe>=2.0",
+    "pyyaml>=6.0",
+    "pydantic>=2.0",
+    "python-docx>=1.0",
+    "rich>=13.0",
+    "playwright>=1.48",
+    "weasyprint>=60",
+    "pdfkit>=1.0",
+]
+
+[project.scripts]
+resumecraft = "resumecraft.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/nick1jesky/ResumeCraft"
+Repository = "https://github.com/nick1jesky/ResumeCraft"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["resumecraft*"]
+
+[tool.setuptools.package-data]
+resumecraft = ["themes/*/*"]

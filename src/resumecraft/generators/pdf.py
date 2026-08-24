@@ -12,11 +12,12 @@ from resumecraft.generators.html import HTMLGenerator
 
 logger = logging.getLogger("resumecraft")
 
-_SUPPORTED_BACKENDS = ("weasyprint", "pdfkit")
+_SUPPORTED_BACKENDS = ("chromium", "weasyprint", "pdfkit")
 
 
 class PDFGenerator(BaseGenerator):
-    """Generates a PDF resume via WeasyPrint (pure Python) or pdfkit (wkhtmltopdf)."""
+    """Generates a PDF resume via headless Chromium (Playwright, recommended),
+    WeasyPrint (pure Python), or pdfkit (wkhtmltopdf)."""
 
     def __init__(
         self,
@@ -26,7 +27,7 @@ class PDFGenerator(BaseGenerator):
         lang: str = "ru",
         accent_color: str = "2B6CB0",
         font_family: str = "Calibri, 'Segoe UI', Arial, sans-serif",
-        backend: str = "weasyprint",
+        backend: str = "chromium",
         wkhtmltopdf_path: str | None = None,
     ) -> None:
         super().__init__(
@@ -53,13 +54,71 @@ class PDFGenerator(BaseGenerator):
     def _generate(self, output_path: Path) -> Path:
         html = self._html_generator.render_html()
 
-        if self.backend == "weasyprint":
+        if self.backend == "chromium":
+            self._render_chromium(html, output_path)
+        elif self.backend == "weasyprint":
             self._render_weasyprint(html, output_path)
         else:
             self._render_pdfkit(html, output_path)
 
         logger.info("PDF saved (%s): %s", self.backend, output_path)
         return output_path
+
+    def _render_chromium(self, html: str, output_path: Path) -> None:
+        """Render via headless Chromium (Playwright).
+
+        This is the recommended backend: it's the same rendering engine a
+        person sees when opening the generated .html file in a real
+        browser, so the PDF and the HTML preview match pixel-for-pixel —
+        no separate print-stylesheet interpretation, no quirky old WebKit
+        (wkhtmltopdf) or pure-Python CSS subset (WeasyPrint) to drift from
+        what the theme actually looks like on screen.
+        """
+        try:
+            from playwright.sync_api import sync_playwright
+        except ModuleNotFoundError as e:
+            raise PDFBackendError(
+                "Backend 'chromium' is selected but the 'playwright' package "
+                "is not installed. Install it with:\n"
+                "  pip install playwright\n"
+                "  playwright install --with-deps chromium\n"
+                "— or pass --pdf-backend weasyprint (or pdfkit) to use another "
+                "renderer instead."
+            ) from e
+
+        try:
+            with sync_playwright() as p:
+                try:
+                    browser = p.chromium.launch()
+                except Exception as e:
+                    raise PDFBackendError(
+                        "Backend 'chromium' needs the Playwright Chromium "
+                        "browser binary, which isn't installed yet. Run:\n"
+                        "  playwright install --with-deps chromium\n"
+                        f"(original error: {e})"
+                    ) from e
+                try:
+                    page = browser.new_page()
+                    page.set_content(html, wait_until="load")
+                    # Emulate 'screen' (not 'print') media so the PDF matches
+                    # exactly what the theme looks like in a browser — the
+                    # themes' own @media print rules still apply if a theme
+                    # defines them, but we don't force print-only defaults
+                    # that could make the PDF diverge from the HTML preview.
+                    page.emulate_media(media="screen")
+                    page.pdf(
+                        path=str(output_path),
+                        format="A4",
+                        print_background=True,
+                        margin={"top": "0", "bottom": "0", "left": "0", "right": "0"},
+                        prefer_css_page_size=False,
+                    )
+                finally:
+                    browser.close()
+        except PDFBackendError:
+            raise
+        except Exception as e:
+            raise GenerationError(f"Chromium (Playwright) failed to render PDF: {e}") from e
 
     def _render_weasyprint(self, html: str, output_path: Path) -> None:
         try:

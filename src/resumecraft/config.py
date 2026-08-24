@@ -36,7 +36,7 @@ Theme = Literal[
 ]
 OutputFormat = Literal["html", "pdf", "docx", "all"]
 Language = Literal["ru", "en"]
-PDFBackend = Literal["weasyprint", "pdfkit"]
+PDFBackend = Literal["chromium", "weasyprint", "pdfkit"]
 
 _ENV_PREFIX = "RESUMECRAFT_"
 
@@ -55,7 +55,7 @@ class Config:
     theme: Theme = "clarity"
     format: OutputFormat = "all"
     language: Language = "ru"
-    pdf_backend: PDFBackend = "weasyprint"
+    pdf_backend: PDFBackend = "chromium"
     wkhtmltopdf_path: str | None = None
     accent_color: str = "2B6CB0"
     font_family: str = "Calibri, 'Segoe UI', Arial, sans-serif"
