@@ -170,6 +170,7 @@ class ResumeData(BaseModel):
         pattern=r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
         description="Email address",
     )
+    salary: str | None = Field(default=None, description="Desired or current salary")
     linkedin: str | None = Field(default=None, description="LinkedIn URL or handle")
     github: str | None = Field(default=None, description="GitHub URL or handle")
     website: str | None = Field(default=None, description="Personal website URL")

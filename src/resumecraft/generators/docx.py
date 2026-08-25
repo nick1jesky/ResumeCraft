@@ -125,8 +125,10 @@ class DOCXGenerator(BaseGenerator):
         for extra in (self.data.linkedin, self.data.github, self.data.website):
             if extra:
                 contact_bits.append(extra)
-        contact_line = "  |  ".join(b for b in contact_bits if b)
+        if self.data.salary:
+            contact_bits.append(f"Зарплата: {self.data.salary}")
 
+        contact_line = "  |  ".join(b for b in contact_bits if b)
         contact_p = doc.add_paragraph()
         contact_p.paragraph_format.space_after = Pt(8)
         run = contact_p.add_run(contact_line)
