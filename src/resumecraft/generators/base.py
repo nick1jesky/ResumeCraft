@@ -35,6 +35,9 @@ class BaseGenerator:
         "minimal",
         "executive",
         "black-green",
+        "aurora",
+        "ivory",
+        "cobblestone",
     )
 
     def __init__(
@@ -44,7 +47,7 @@ class BaseGenerator:
         theme_name: str = "clarity",
         lang: str = "ru",
         accent_color: str = "2B6CB0",
-        font_family: str = "Calibri, 'Segoe UI', Arial, sans-serif",
+        font_family: str = "'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif",
     ) -> None:
         if theme_name not in self.SUPPORTED_THEMES:
             available = ", ".join(list_available_themes()) or "(none found)"

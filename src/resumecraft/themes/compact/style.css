@@ -87,6 +87,8 @@ body {
 }
 
 .section h2 {
+  break-after: avoid;
+  page-break-after: avoid;
   font-size: 8.5pt;
   font-weight: 700;
   text-transform: uppercase;
@@ -205,6 +207,17 @@ a {
 }
 
 .entry {
+  break-inside: auto;
+}
+
+.entry-row {
+  break-inside: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.entry ul li {
   break-inside: avoid;
   page-break-inside: avoid;
 }

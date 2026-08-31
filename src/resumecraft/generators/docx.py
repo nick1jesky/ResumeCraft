@@ -45,7 +45,7 @@ class DOCXGenerator(BaseGenerator):
         theme_name: str = "clarity",
         lang: str = "ru",
         accent_color: str = "2B6CB0",
-        font_family: str = "Calibri, 'Segoe UI', Arial, sans-serif",
+        font_family: str = "'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif",
     ) -> None:
         super().__init__(
             data,
@@ -126,7 +126,7 @@ class DOCXGenerator(BaseGenerator):
             if extra:
                 contact_bits.append(extra)
         if self.data.salary:
-            contact_bits.append(f"Зарплата: {self.data.salary}")
+            contact_bits.append(f"{self.labels['salary']}: {self.data.salary}")
 
         contact_line = "  |  ".join(b for b in contact_bits if b)
         contact_p = doc.add_paragraph()

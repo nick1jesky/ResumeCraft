@@ -7,6 +7,14 @@ from pathlib import Path
 
 import click
 
+# On Windows, stdout/stderr default to the system's legacy codepage (e.g.
+# cp1251 on RU-locale machines), which can't encode the ✓/🎉/etc. characters
+# below and crashes the whole CLI with a UnicodeEncodeError. Force UTF-8
+# with a lossy fallback so output is always safe to print.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+
 from resumecraft import __version__
 from resumecraft.config import resolve_config
 from resumecraft.exceptions import ResumeCraftError
@@ -62,6 +70,9 @@ except ImportError:  # pragma: no cover - plain fallback when rich isn't install
             "minimal",
             "executive",
             "black-green",
+            "aurora",
+            "ivory",
+            "cobblestone",
         ],
         case_sensitive=False,
     ),

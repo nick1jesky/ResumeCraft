@@ -33,6 +33,9 @@ Theme = Literal[
     "minimal",
     "executive",
     "black-green",
+    "aurora",
+    "ivory",
+    "cobblestone",
 ]
 OutputFormat = Literal["html", "pdf", "docx", "all"]
 Language = Literal["ru", "en"]
@@ -58,7 +61,7 @@ class Config:
     pdf_backend: PDFBackend = "chromium"
     wkhtmltopdf_path: str | None = None
     accent_color: str = "2B6CB0"
-    font_family: str = "Calibri, 'Segoe UI', Arial, sans-serif"
+    font_family: str = "'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif"
     debug: bool = False
 
     def __post_init__(self) -> None:

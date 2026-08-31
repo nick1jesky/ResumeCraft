@@ -25,6 +25,7 @@ _LABELS: dict[str, dict[str, str]] = {
         "additional": "Дополнительная информация",
         "present": "настоящее время",
         "contacts": "Контакты",
+        "salary": "Зарплата",
     },
     "en": {
         "summary": "About",
@@ -37,6 +38,7 @@ _LABELS: dict[str, dict[str, str]] = {
         "additional": "Additional Information",
         "present": "Present",
         "contacts": "Contacts",
+        "salary": "Salary",
     },
 }
 

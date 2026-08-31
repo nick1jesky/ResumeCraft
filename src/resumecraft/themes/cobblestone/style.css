@@ -1,0 +1,372 @@
+/* style.css — "cobblestone": a dark, monochrome-graphite theme for
+   defense-tech / aerospace / heavy-industry employers (the visual register
+   of Palantir's Gotham/Foundry UI, Anduril's Lattice, ICEYE's ops
+   dashboards, Gazprom's institutional weight) — an operating-system panel,
+   not a piece of paper. Deliberately NOT tied to --accent-color (same
+   reasoning as "black-green"): the whole identity is a single achromatic
+   graphite palette, so a lighter steel-gray tone is used as the one
+   "signal" color instead of a configurable hue. No rounded corners, no
+   drop shadows — edges are cut, not softened. Section labels are bracketed
+   like a HUD readout; the page background carries a barely-visible block
+   grid (the literal "cobblestone" — large paving-stone joints, not a
+   texture you're meant to consciously notice). */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: #0a0b0c;
+  font-family: {{ font_family }};
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: #c3c6cb;
+}
+
+body {
+  padding: 32px 16px;
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  background-color: #0e0f11;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 84px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+/* ===== Header ===== */
+
+.header {
+  background: #0a0b0c;
+  border-bottom: 3px solid #9aa0a8;
+  padding: 42px 56px 24px;
+}
+
+/* Header nameplate: a monospace "engraved panel" treatment — the name
+   reads like a designation stencilled onto hardware rather than typeset
+   prose. The scanline effect is a paint-only trick (repeating-gradient
+   clipped to the text, text-fill made transparent so the gradient shows
+   through); the underlying text node is untouched, so copy/paste and ATS
+   parsing see the same plain string as any other theme. Engines that don't
+   support background-clip:text (WeasyPrint, wkhtmltopdf) simply ignore the
+   two -webkit-prefixed lines and fall back to the solid `color` below. */
+
+.header h1 {
+  font-family: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 21pt;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  color: #eceef0;
+  background: repeating-linear-gradient(
+    to bottom,
+    #eceef0 0px,
+    #eceef0 2px,
+    rgba(236, 238, 240, 0.32) 2px,
+    rgba(236, 238, 240, 0.32) 4px
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header .headline {
+  font-size: 10pt;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8b8f96;
+  margin-top: 7px;
+}
+
+.header-rule {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  margin: 18px 0 14px;
+}
+
+.contact-line {
+  font-size: 9pt;
+  letter-spacing: 0.02em;
+  color: #9a9ea5;
+}
+
+.contact-line span {
+  margin-right: 16px;
+  white-space: nowrap;
+}
+
+.contact-line span:last-child {
+  margin-right: 0;
+}
+
+.contact-line a {
+  color: #9a9ea5;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.contact-line a:hover {
+  color: #eceef0;
+  border-bottom-color: #eceef0;
+}
+
+.body-content {
+  padding: 34px 56px 46px;
+}
+
+/* ===== Sections ===== */
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #eceef0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.section h2::before {
+  content: "[ ";
+  color: #7b8088;
+  font-weight: 400;
+}
+
+.section h2::after {
+  content: " ]";
+  color: #7b8088;
+  font-weight: 400;
+}
+
+.summary {
+  color: #c3c6cb;
+}
+
+/* ===== Entries (experience / education / projects) ===== */
+
+.entry {
+  border-left: 2px solid rgba(255, 255, 255, 0.12);
+  padding-left: 15px;
+  margin-bottom: 17px;
+  break-inside: auto;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-row {
+  overflow: hidden;
+  display: flow-root;
+  break-inside: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.entry-title {
+  float: left;
+  font-weight: 700;
+  font-size: 10.5pt;
+  color: #eceef0;
+}
+
+.entry-sep {
+  color: #5c6067;
+  font-weight: 400;
+}
+
+.entry-date {
+  float: right;
+  font-family: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 7.5pt;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+  color: #c4c9d1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.entry-sub {
+  clear: both;
+  font-size: 9.5pt;
+  color: #8b8f96;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  break-inside: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.entry-desc {
+  color: #c3c6cb;
+  margin-bottom: 6px;
+}
+
+.entry ul {
+  list-style: none;
+  margin-top: 2px;
+}
+
+.entry ul li {
+  position: relative;
+  padding-left: 15px;
+  margin-bottom: 5px;
+  color: #c3c6cb;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.entry ul li::before {
+  content: "▪";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 7pt;
+  color: #7b8088;
+}
+
+/* ===== Skills ===== */
+
+.skills-row {
+  margin-bottom: 7px;
+  overflow: hidden;
+}
+
+.skills-row:last-child {
+  margin-bottom: 0;
+}
+
+.skills-cat {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 8pt;
+  letter-spacing: 0.06em;
+  color: #eceef0;
+  margin-right: 8px;
+}
+
+.skills-items {
+  color: #c3c6cb;
+}
+
+/* ===== Tech tags (projects) ===== */
+
+.tech-list {
+  margin-top: 4px;
+}
+
+.tech-pill {
+  display: inline-block;
+  font-family: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 7pt;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #c4c9d1;
+  background: #0a0b0c;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  margin: 3px 6px 0 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* ===== Two-column footer block (languages / certifications) ===== */
+
+.two-col {
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.two-col .col {
+  width: 48%;
+  margin-bottom: 0;
+}
+
+.two-col .col:first-child {
+  float: left;
+}
+
+.two-col .col:last-child {
+  float: right;
+}
+
+.two-col .col:only-child {
+  width: 100%;
+  float: none;
+}
+
+.inline-list {
+  color: #c3c6cb;
+}
+
+.inline-list .muted {
+  color: #8b8f96;
+}
+
+.tight-list {
+  list-style: none;
+}
+
+.tight-list li {
+  position: relative;
+  padding-left: 15px;
+  margin-bottom: 4px;
+  color: #c3c6cb;
+}
+
+.tight-list li::before {
+  content: "▪";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 7pt;
+  color: #7b8088;
+}
+
+a {
+  color: #c4c9d1;
+  text-decoration: none;
+}
+
+/* ===== Force graphite backgrounds/patterns to survive into PDF export ===== */
+
+html, body, .page, .header, .entry-date, .tech-pill {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+@media print {
+  html, body {
+    background: #0a0b0c;
+  }
+  body {
+    padding: 0;
+  }
+  .page {
+    max-width: none;
+    border: none;
+  }
+}

@@ -20,6 +20,9 @@ table.page {
   background: #ffffff;
   border-collapse: collapse;
   border: 1px solid #e6e8ec;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px -32px rgba(20, 24, 31, 0.28);
+  overflow: hidden;
 }
 
 table.page td {
@@ -101,12 +104,19 @@ table.page td {
 .skill-group ul {
   list-style: none;
   padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
 }
 
 .skill-group li {
-  font-size: 9.5pt;
-  color: #e8eff5;
-  margin-bottom: 2px;
+  font-size: 8.5pt;
+  color: #f0f6fa;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+  padding: 2px 10px;
+  margin-bottom: 0;
 }
 
 .main {
@@ -131,6 +141,8 @@ section:last-child {
   border-bottom: 2px solid #{{ accent_color }};
   padding-bottom: 4px;
   margin: 0 0 14px 0;
+  break-after: avoid;
+  page-break-after: avoid;
 }
 
 .entry {
@@ -226,10 +238,29 @@ section:last-child {
   table.page {
     max-width: none;
     border: none;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
-.entry, .skill-pill {
+.entry {
+  break-inside: auto;
+}
+
+.entry-title, .entry-meta {
+  break-inside: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.entry ul li, .tech-pill {
   break-inside: avoid;
   page-break-inside: avoid;
+}
+
+.sidebar, .skill-group li, .tech-pill {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color-adjust: exact;
 }

@@ -90,6 +90,8 @@ body {
 }
 
 .section h2 {
+  break-after: avoid;
+  page-break-after: avoid;
   text-align: center;
   font-size: 10.5pt;
   font-weight: 700;
@@ -102,9 +104,10 @@ body {
 .section h2 .ornament {
   display: block;
   width: 46px;
-  height: 2px;
-  background: #{{ accent_color }};
-  margin: 0 auto 9px;
+  height: 3px;
+  border-top: 1px solid #{{ accent_color }};
+  border-bottom: 1px solid #{{ accent_color }};
+  margin: 0 auto 10px;
 }
 
 .summary {
@@ -276,6 +279,17 @@ a {
 }
 
 .entry {
+  break-inside: auto;
+}
+
+.entry-row, .entry-sub {
+  break-inside: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.entry ul li {
   break-inside: avoid;
   page-break-inside: avoid;
 }

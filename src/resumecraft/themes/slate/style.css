@@ -15,11 +15,24 @@
 }
 
 html, body {
-  background: #ffffff;
+  background: #eef0f3;
   font-family: {{ font_family }};
   font-size: 10.5pt;
   line-height: 1.55;
   color: #262a30;
+}
+
+body {
+  padding: 32px 16px;
+}
+
+.canvas {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px -32px rgba(20, 24, 31, 0.3);
+  overflow: hidden;
 }
 
 /* ===== Header (full width, spans both columns) ===== */
@@ -47,6 +60,7 @@ html, body {
 
 table.page {
   width: 100%;
+  max-width: none;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -74,6 +88,8 @@ h2 {
   letter-spacing: 0.1em;
   color: #{{ accent_color }};
   margin-bottom: 10px;
+  break-after: avoid;
+  page-break-after: avoid;
 }
 
 td.sidebar h2 {
@@ -216,6 +232,17 @@ a {
 /* ===== Print ===== */
 
 @media print {
+  html, body {
+    background: #ffffff;
+  }
+  body {
+    padding: 0;
+  }
+  .canvas {
+    max-width: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
   td.sidebar {
     background: #f4f5f7;
     -webkit-print-color-adjust: exact;
@@ -225,6 +252,17 @@ a {
 }
 
 .entry {
+  break-inside: auto;
+}
+
+.entry-row, .entry-sub {
+  break-inside: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.entry ul li {
   break-inside: avoid;
   page-break-inside: avoid;
 }

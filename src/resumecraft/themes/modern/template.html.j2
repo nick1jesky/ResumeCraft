@@ -20,13 +20,14 @@
       {% if resume.linkedin %}<li><a style="color:inherit" href="{{ resume.linkedin }}">LinkedIn</a></li>{% endif %}
       {% if resume.github %}<li><a style="color:inherit" href="{{ resume.github }}">GitHub</a></li>{% endif %}
       {% if resume.website %}<li><a style="color:inherit" href="{{ resume.website }}">{{ resume.website }}</a></li>{% endif %}
+      {% if resume.salary %}<li>{{ resume.salary }}</li>{% endif %}
     </ul>
 
     {% if resume.skills %}
     <h2>{{ labels.skills }}</h2>
     {% for cat in resume.skills %}
-      <div style="margin-bottom:8px;">
-        <div style="font-weight:700; font-size:10pt;">{{ cat.category }}</div>
+      <div class="skill-group">
+        <div class="skill-category">{{ cat.category }}</div>
         <ul>
           {% for item in cat.items %}<li>{{ item }}</li>{% endfor %}
         </ul>
@@ -99,7 +100,7 @@
           {% if proj.description %}<div>{{ proj.description }}</div>{% endif %}
           {% if proj.technologies %}
             <div class="skills-grid" style="margin-top:6px;">
-              {% for t in proj.technologies %}<span class="skill-pill">{{ t }}</span>{% endfor %}
+              {% for t in proj.technologies %}<span class="tech-pill">{{ t }}</span>{% endfor %}
             </div>
           {% endif %}
         </div>

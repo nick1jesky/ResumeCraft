@@ -92,6 +92,8 @@ body {
 }
 
 .section h2 {
+  break-after: avoid;
+  page-break-after: avoid;
   font-size: 9pt;
   font-weight: 600;
   text-transform: uppercase;
@@ -140,12 +142,13 @@ body {
 
 .entry-date {
   float: right;
-  font-size: 8.5pt;
-  color: #9a9fa6;
+  font-size: 8pt;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: #b7bbc1;
   white-space: nowrap;
-  padding-top: 1px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  padding-bottom: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 2px 8px;
 }
 
 .entry-sub {
@@ -288,6 +291,17 @@ html, body, .page {
 }
 
 .entry {
+  break-inside: auto;
+}
+
+.entry-row, .entry-sub {
+  break-inside: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.entry ul li {
   break-inside: avoid;
   page-break-inside: avoid;
 }

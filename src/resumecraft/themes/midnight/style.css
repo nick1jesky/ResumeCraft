@@ -27,8 +27,10 @@ body {
 .page {
   max-width: 780px;
   margin: 0 auto;
-  background: #161a21;
+  background: linear-gradient(175deg, #181c24 0%, #121620 100%);
   border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.55);
   padding: 52px 56px 48px;
 }
 
@@ -92,12 +94,15 @@ body {
 }
 
 .section h2 {
+  break-after: avoid;
+  page-break-after: avoid;
   font-size: 9.5pt;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.11em;
   color: #{{ accent_color }};
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-image: linear-gradient(90deg, #{{ accent_color }} 0, rgba(255, 255, 255, 0.1) 90px) 1;
   padding-bottom: 6px;
   margin-bottom: 13px;
 }
@@ -274,11 +279,24 @@ html, body, .page, .tech-pill {
   .page {
     max-width: none;
     border: none;
+    border-radius: 0;
+    box-shadow: none;
     padding: 34px 42px;
   }
 }
 
-.entry, .tech-pill {
+.entry {
+  break-inside: auto;
+}
+
+.entry-row, .entry-sub {
+  break-inside: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.entry ul li, .tech-pill {
   break-inside: avoid;
   page-break-inside: avoid;
 }

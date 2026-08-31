@@ -19,6 +19,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   border: 1px solid #ececec;
+  box-shadow: 0 20px 50px -28px rgba(20, 20, 30, 0.22);
 }
 
 header {
@@ -50,14 +51,28 @@ header .contacts span:not(:last-child)::after {
 section { margin-bottom: 1.8rem; }
 
 h2 {
+  break-after: avoid;
+  page-break-after: avoid;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--muted);
   font-weight: 600;
-  margin: 0 0 0.6rem 0;
+  margin: 0 0 0.7rem 0;
   border-bottom: 1px solid #e5e7eb;
   padding-bottom: 0.3rem;
+}
+
+h2::before {
+  content: "";
+  flex: 0 0 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .entry { margin-bottom: 1.2rem; }
@@ -85,6 +100,10 @@ h2 {
   margin-right: 0.5rem;
 }
 
+.tech-list {
+  margin-top: 4px;
+}
+
 .tech-pill {
   display: inline-block;
   background: var(--light-bg);
@@ -108,11 +127,23 @@ h2 {
     margin: 0;
     max-width: none;
     border: none;
+    box-shadow: none;
     padding: 30px 38px;
   }
 }
 
-.entry, .tech-pill {
+.entry {
+  break-inside: auto;
+}
+
+.entry-title, .entry-meta {
+  break-inside: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.entry ul li, .tech-pill {
   break-inside: avoid;
   page-break-inside: avoid;
 }

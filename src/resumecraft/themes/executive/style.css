@@ -21,6 +21,7 @@ table.page {
   border-collapse: collapse;
   border: 1px solid #e6e8ec;
   border-radius: 12px;
+  box-shadow: 0 24px 60px -32px rgba(20, 24, 31, 0.3);
   overflow: hidden;
 }
 
@@ -163,6 +164,8 @@ section:last-child {
   border-bottom: 2px solid #{{ accent_color }};
   padding-bottom: 0.2rem;
   margin: 0 0 1rem 0;
+  break-after: avoid;
+  page-break-after: avoid;
 }
 
 .summary {
@@ -298,6 +301,7 @@ section:last-child {
   table.page {
     border: none;
     border-radius: 0;
+    box-shadow: none;
   }
 
   .sidebar {
@@ -312,7 +316,18 @@ section:last-child {
   }
 }
 
-.entry, .tech-pill {
+.entry {
+  break-inside: auto;
+}
+
+.entry-header, .entry-location, .entry-institution {
+  break-inside: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.entry-details li, .tech-pill {
   break-inside: avoid;
   page-break-inside: avoid;
 }

@@ -7,6 +7,7 @@
 <style>{{ inline_css }}</style>
 </head>
 <body>
+<div class="canvas">
 
 <header class="header">
   <h1>{{ resume.full_name }}</h1>
@@ -25,6 +26,7 @@
       {% if resume.linkedin %}<li><a href="{{ resume.linkedin }}">LinkedIn</a></li>{% endif %}
       {% if resume.github %}<li><a href="{{ resume.github }}">GitHub</a></li>{% endif %}
       {% if resume.website %}<li><a href="{{ resume.website }}">{{ resume.website }}</a></li>{% endif %}
+      {% if resume.salary %}<li>{{ resume.salary }}</li>{% endif %}
     </ul>
 
     {% if resume.skills %}
@@ -124,5 +126,6 @@
   </td>
 </tr>
 </table>
+</div>
 </body>
 </html>

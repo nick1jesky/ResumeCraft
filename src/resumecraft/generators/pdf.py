@@ -26,7 +26,7 @@ class PDFGenerator(BaseGenerator):
         theme_name: str = "clarity",
         lang: str = "ru",
         accent_color: str = "2B6CB0",
-        font_family: str = "Calibri, 'Segoe UI', Arial, sans-serif",
+        font_family: str = "'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif",
         backend: str = "chromium",
         wkhtmltopdf_path: str | None = None,
     ) -> None:
